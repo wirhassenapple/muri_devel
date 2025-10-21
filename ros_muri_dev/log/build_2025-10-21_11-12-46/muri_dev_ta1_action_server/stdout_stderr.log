@@ -1,0 +1,31 @@
+running egg_info
+creating ../../build/muri_dev_ta1_action_server/muri_dev_ta1_action_server.egg-info
+writing ../../build/muri_dev_ta1_action_server/muri_dev_ta1_action_server.egg-info/PKG-INFO
+writing dependency_links to ../../build/muri_dev_ta1_action_server/muri_dev_ta1_action_server.egg-info/dependency_links.txt
+writing entry points to ../../build/muri_dev_ta1_action_server/muri_dev_ta1_action_server.egg-info/entry_points.txt
+writing requirements to ../../build/muri_dev_ta1_action_server/muri_dev_ta1_action_server.egg-info/requires.txt
+writing top-level names to ../../build/muri_dev_ta1_action_server/muri_dev_ta1_action_server.egg-info/top_level.txt
+writing manifest file '../../build/muri_dev_ta1_action_server/muri_dev_ta1_action_server.egg-info/SOURCES.txt'
+reading manifest file '../../build/muri_dev_ta1_action_server/muri_dev_ta1_action_server.egg-info/SOURCES.txt'
+writing manifest file '../../build/muri_dev_ta1_action_server/muri_dev_ta1_action_server.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/build/muri_dev_ta1_action_server/build
+creating /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/build/muri_dev_ta1_action_server/build/lib
+creating /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/build/muri_dev_ta1_action_server/build/lib/muri_dev_ta1_action_server
+copying muri_dev_ta1_action_server/__init__.py -> /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/build/muri_dev_ta1_action_server/build/lib/muri_dev_ta1_action_server
+running install
+running install_lib
+creating /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/install/muri_dev_ta1_action_server/lib/python3.10/site-packages/muri_dev_ta1_action_server
+copying /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/build/muri_dev_ta1_action_server/build/lib/muri_dev_ta1_action_server/__init__.py -> /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/install/muri_dev_ta1_action_server/lib/python3.10/site-packages/muri_dev_ta1_action_server
+byte-compiling /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/install/muri_dev_ta1_action_server/lib/python3.10/site-packages/muri_dev_ta1_action_server/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/install/muri_dev_ta1_action_server/share/ament_index
+creating /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/install/muri_dev_ta1_action_server/share/ament_index/resource_index
+creating /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/install/muri_dev_ta1_action_server/share/ament_index/resource_index/packages
+copying resource/muri_dev_ta1_action_server -> /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/install/muri_dev_ta1_action_server/share/ament_index/resource_index/packages
+copying package.xml -> /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/install/muri_dev_ta1_action_server/share/muri_dev_ta1_action_server
+running install_egg_info
+Copying ../../build/muri_dev_ta1_action_server/muri_dev_ta1_action_server.egg-info to /home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/install/muri_dev_ta1_action_server/lib/python3.10/site-packages/muri_dev_ta1_action_server-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/build/muri_dev_ta1_action_server/install.log'

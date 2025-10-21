@@ -1,0 +1,25 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from muri_dev_ta_interfaces/action/GoTo.action
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Pose2D.idl"
+
+module muri_dev_ta_interfaces {
+  module action {
+    @verbatim (language="comment", text=
+      "Request")
+    struct GoTo_Goal {
+      geometry_msgs::msg::Pose2D target_pose;
+    };
+    @verbatim (language="comment", text=
+      "Result")
+    struct GoTo_Result {
+      boolean success;
+    };
+    @verbatim (language="comment", text=
+      "Feedback")
+    struct GoTo_Feedback {
+      float distance_remaining;
+    };
+  };
+};
