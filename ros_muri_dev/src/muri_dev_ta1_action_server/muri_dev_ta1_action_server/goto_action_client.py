@@ -32,7 +32,7 @@ class GoToActionClient(Node):
 
     def get_result_callback(self, promise):
         result = promise.result().result
-        self.get_logger().info('Ferdisch')
+        self.get_logger().info('Ferdisch' + str(result.success))
 
     def feedback_callback(self, feedback_msg):
         feedback = feedback_msg.feedback

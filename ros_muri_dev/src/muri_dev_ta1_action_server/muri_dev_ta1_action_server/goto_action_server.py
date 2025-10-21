@@ -15,7 +15,7 @@ class GoToActionServer(Node):
         )
 
     def execute_callback(self, goal_handle):
-        self.get_logger().info('Goal Recieved: ' + goal_handle)
+        self.get_logger().info('Goal Recieved: ')
         data = goal_handle.request.target_pose
 
         x = data.x
@@ -25,7 +25,8 @@ class GoToActionServer(Node):
         r = math.sqrt((x * x)+ (y * y))
 
         result = GoTo.Result()
-
+        result.success = True
+        goal_handle.succeed()
         return result
 
 

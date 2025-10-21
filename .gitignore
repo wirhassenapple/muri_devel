@@ -15,6 +15,7 @@ msg/*Result.msg
 msg/_*.py
 build_isolated/
 devel_isolated/
+ros_muri_dev/log/
 ros_muri_dev/log/*
 .vscode/browse.vc.db
 .vscode/
