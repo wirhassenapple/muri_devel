@@ -2,7 +2,7 @@
 
 # since this file is sourced use either the provided AMENT_CURRENT_PREFIX
 # or fall back to the destination set at configure time
-: ${AMENT_CURRENT_PREFIX:="/home/benji/Downloads/ros2_init/muri_devel/ros_muri_dev/install/muri_dev_ta_interfaces"}
+: ${AMENT_CURRENT_PREFIX:="/home/lbraun/muri_devel/muri_devel/ros_muri_dev/install/muri_dev_ta_interfaces"}
 if [ ! -d "$AMENT_CURRENT_PREFIX" ]; then
   if [ -z "$COLCON_CURRENT_PREFIX" ]; then
     echo "The compile time prefix path '$AMENT_CURRENT_PREFIX' doesn't " \

@@ -5,14 +5,14 @@ from muri_dev_ta_interfaces.action import GoTo
 
 class GoToActionClient(Node):
     def __init__(self):
-        super.__init('goto_action_client')
+        super().__init__('goto_action_client')
         self._action_client = ActionClient(self, GoTo, 'goto')
 
     def send_goal(self, x, y, th):
         goal_msg = GoTo.Goal() ##Check with target_pose from GoTo interface
-        goal_msg.x = x
-        goal_msg.y = y
-        goal_msg.theta = th
+        goal_msg.target_pose.x = float(x)
+        goal_msg.target_pose.y = float(y)
+        goal_msg.target_pose.theta = float(th)
 
         self._action_client.wait_for_server()
 
@@ -44,7 +44,7 @@ def main(args=None):
     action_client = GoToActionClient()
     action_client.send_goal(1,2,3)
     
-    rclpy.spin()
+    rclpy.spin(action_client)
     rclpy.shutdown()
 
 if __name__ == '__main__':

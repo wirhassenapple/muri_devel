@@ -24,6 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'goto_action_client = muri_dev_ta1_action_server.goto_action_client:main',
+            'goto_action_server = muri_dev_ta1_action_server.goto_action_server:main'
         ],
     },
     
