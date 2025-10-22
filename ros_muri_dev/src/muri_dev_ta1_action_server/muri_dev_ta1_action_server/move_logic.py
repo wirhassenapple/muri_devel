@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# wenn wir hier noch den teil, den ChatGPT nicht gerallt hat filtern und den ros part rausholen, haben wir das was er wollte
 from state_mach import StateMachine
 from types import SimpleNamespace
 import math
