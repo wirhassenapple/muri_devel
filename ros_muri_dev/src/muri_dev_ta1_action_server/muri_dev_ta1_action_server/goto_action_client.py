@@ -41,8 +41,13 @@ class GoToActionClient(Node):
 def main(args=None):
     rclpy.init(args=args)
 
+    # Parameter von der Konsole einlesen
+    x = float(input("Ziel X eingeben: "))
+    y = float(input("Ziel Y eingeben: "))
+    theta = float(input("Ziel Theta eingeben: "))
+
     action_client = GoToActionClient()
-    action_client.send_goal(1,2,3)
+    action_client.send_goal(x, y, theta)
     
     rclpy.spin(action_client)
     rclpy.shutdown()

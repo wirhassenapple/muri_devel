@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from state_mach import StateMachine
+from .state_mach import StateMachine
 from types import SimpleNamespace
 import math
 
@@ -19,6 +19,7 @@ out = SimpleNamespace(
     finish = False,
     success = False
     )
+ad, dd, agd = None, None, None
 ANGLE_TOLERANCE = math.radians(2) # Angabe in grad
 TRANSLATION_TOLERANCE = 0.05 # Angabe in m
 
@@ -59,7 +60,12 @@ def resetGoal():
     out.finish = False
     out.success = False
 
+def resetFinish():
+    out.finish = False
+    out.success = False
 def calculatePolarAngleDiff():
+    if (goal.x == None) or (goal.y == None) or (position.x == None) or (position.y == None):
+        return 0, False
     target_angle = math.atan2(goal.y - position.y, goal.x - position.x)
     angle_diff = target_angle - position.theta
 
@@ -68,13 +74,17 @@ def calculatePolarAngleDiff():
     elif angle_diff < -math.pi:
         angle_diff += 2 * math.pi
 
-    return angle_diff
+    return angle_diff, True
 
 def calculatePolarDistanceDiff():
+    if (goal.x == None) or (goal.y == None) or (position.x == None) or (position.y == None):
+        return 0, False
     distance = math.sqrt(((goal.x - position.x) ** 2) + ((goal.y - position.y) ** 2))
-    return distance
+    return distance, True
 
 def calculatePolarGoalAngleDiff():
+    if (goal.theta  == None) or (position.theta == None):
+        return 0, False
     target_angle = goal.theta
     angle_diff = target_angle - position.theta
 
@@ -83,18 +93,19 @@ def calculatePolarGoalAngleDiff():
     elif angle_diff < -math.pi:
         angle_diff += 2 * math.pi
 
-    return angle_diff
+    return angle_diff, True
 
 def checkGoalExceeded(ad):
-    
+    #not working
     if ad > math.pi:
         return True
 
-    return False 
+    return False
 
 def executeMovement(reset):
+    global goal, state, position, turnedBeforeMove, out, ad, dd, agd
     if reset:
-        ad, dd, agd = None
+        ad, dd, agd = None, None, None
     match state:
         case StateMachine.Init:
             initStateMachine()
@@ -104,13 +115,15 @@ def executeMovement(reset):
                 return executeMovement(False)
             
         case StateMachine.Calculate:
-            print("State: " + state)
+            print("State: " + str(state))
 
-            ad = calculatePolarAngleDiff()
-            dd = calculatePolarDistanceDiff()
-            agd = calculatePolarGoalAngleDiff()
+            ad, cvad = calculatePolarAngleDiff()
+            dd, cvdd = calculatePolarDistanceDiff()
+            agd, cvadg = calculatePolarGoalAngleDiff()
             out.distance_remaining = dd
-
+            
+            if not cvad or not cvdd or not cvadg:
+                return 
             if abs(ad) >= ANGLE_TOLERANCE and not turnedBeforeMove:
                 state = StateMachine.TurnBeforeMove
                 return executeMovement(False)
@@ -131,23 +144,23 @@ def executeMovement(reset):
                 return executeMovement(True)
 
         case StateMachine.TurnBeforeMove:
-            print("State: " + state)
+            print("State: " + str(state))
             out.linear.x = 0
             out.linear.y = 0
             if ad > 0:
-                out.angular.z = 0.2
+                out.angular.z = 0.05
             else: 
-                out.angular.z = -0.2
+                out.angular.z = -0.05
 
             state = StateMachine.Calculate
     
             return
 
         case StateMachine.DriveMove:
-            print("State: " + state)
+            print("State: " + str(state))
             out.angular.z = 0
 
-            out.linear.x = 0.4
+            out.linear.x = 0.1
 
             if checkGoalExceeded(ad):
                 state = StateMachine.Failure
@@ -158,21 +171,21 @@ def executeMovement(reset):
             return
         
         case StateMachine.TurnAfterMove:
-            print("State: " + state)
+            print("State: " + str(state))
             out.linear.x = 0
             out.linear.y = 0
 
             if agd > 0:
-                out.angular.z = 0.2
+                out.angular.z = 0.05
             else: 
-                out.angular.z = -0.2
+                out.angular.z = -0.05
 
             state = StateMachine.Calculate
     
             return
 
         case StateMachine.Failure:
-            print("State: " + state)
+            print("State: " + str(state))
             resetGoal()
             out.linear.x = 0
             out.linear.y = 0
@@ -182,7 +195,7 @@ def executeMovement(reset):
 
 
         case StateMachine.Success:
-            print("State: " + state)
+            print("State: " + str(state))
             resetGoal()
             out.finish = True
             out.success = True

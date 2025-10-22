@@ -19,9 +19,9 @@ def test_action_server(ros_init):
     assert client.wait_for_server(timeout_sec=3.0), "Action server not available"
 
     goal_msg = GoTo.Goal()
-    goal_msg.target_pose.x = float(161)
-    goal_msg.target_pose.y = float(69)
-    goal_msg.target_pose.theta = float(360)
+    goal_msg.target_pose.x = float(-1.5)
+    goal_msg.target_pose.y = float(-0.3)
+    goal_msg.target_pose.theta = float(0)
 
     promise = client.send_goal_async(goal_msg)
     rclpy.spin_until_future_complete(node, promise)
