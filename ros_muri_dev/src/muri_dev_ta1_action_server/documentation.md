@@ -1,6 +1,6 @@
 # M.U.R.I devel Teilaufgabe 1 Teil 3/3
 
-### Bewegungsbefehl
+### Move to Position
 Nach dem Empfang des GoTo-2D-Pose-Befehls (Eingabe für die Zielposition) wird die aktuelle Roboterposition aus dem Topic `/odom` eingelesen.
 Daraufhin erfolgt die Berechnung der Entfernung zum Ziel, wobei dieser Berechnungsvorgang zeitgesteuert aufgerufen wird.
 
