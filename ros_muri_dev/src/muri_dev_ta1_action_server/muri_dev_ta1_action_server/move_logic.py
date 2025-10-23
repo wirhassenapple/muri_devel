@@ -122,7 +122,9 @@ def executeMovement(reset):
             
             if not cvad or not cvdd or not cvadg:
                 return 
-            if abs(ad) >= ANGLE_TOLERANCE and not turnedBeforeMove:
+
+            print(str(abs(ad)) + " xx " + str(ANGLE_TOLERANCE) + " xx " + str(dd) + " xx " + str(TRANSLATION_TOLERANCE))
+            if abs(ad) >= ANGLE_TOLERANCE and dd > TRANSLATION_TOLERANCE: #and not turnedBeforeMove:
                 state = StateMachine.TurnBeforeMove
                 return executeMovement(False)
             elif abs(ad) < ANGLE_TOLERANCE:
@@ -160,9 +162,9 @@ def executeMovement(reset):
 
             out.linear.x = 0.1
 
-            if checkGoalExceeded(adnn):
-                state = StateMachine.Failure
-                return executeMovement(False)
+            #if checkGoalExceeded(adnn):
+            #    state = StateMachine.Failure
+            #    return executeMovement(False)
 
             state = StateMachine.Calculate
         
