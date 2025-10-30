@@ -7,6 +7,7 @@ class GoToActionClient(Node):
     def __init__(self):
         super().__init__('goto_action_client')
         self._action_client = ActionClient(self, GoTo, 'goto')
+        # self._action_client2_client = ActionClient(self, Drive, 'drive')
 
     def send_goal(self, x, y, th):
         goal_msg = GoTo.Goal() ##Check with target_pose from GoTo interface
