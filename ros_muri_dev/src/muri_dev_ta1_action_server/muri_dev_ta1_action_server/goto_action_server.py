@@ -101,7 +101,7 @@ def main(args = None):
     goto_action_server = GoToActionServer()
     
     rclpy.spin(goto_action_server)
-    rclpy.shutdown() # ?!
-
+    rclpy.shutdown() 
+    
 if __name__ == '__main__':
     main()
